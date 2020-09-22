@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require_relative "../lib/pricefy"
+
+file = "#{File.dirname(__FILE__)}/file.txt"
+dest_path = "./"
+
+Pricefy.new(filepath: file, destination_path: dest_path).run
