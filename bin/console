@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-require "pricefy"
-
-require "irb"
-IRB.start(__FILE__)
