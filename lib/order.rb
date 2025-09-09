@@ -10,6 +10,7 @@ class Order
     serialize
     classify
     taxify
+    self
   end
 
   def price_with_tax
