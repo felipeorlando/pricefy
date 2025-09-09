@@ -9,27 +9,3 @@
 
 # rspec failure tracking
 .rspec_status
-
-# IDE files
-.vscode/
-.idea/
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Ruby version managers
-.rvmrc
-
-# Bundler config
-/.bundle
-/vendor/bundle
-
-# Gem build artifacts
-*.gem
-
-# Log files
-*.log
-
-# Lock files (optional - uncomment if you want to ignore)
-# Gemfile.lock
