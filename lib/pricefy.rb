@@ -1,3 +1,4 @@
+require_relative "classifier"
 require_relative "order"
 require_relative "orders"
 require_relative "reader"
@@ -8,6 +9,7 @@ class Pricefy
     @filepath = filepath
     @destination_path = destination_path
 
+    @classifier = Classifier.new
     @reader = Reader.new
     @order = Order.new
     @orders = Orders.new
@@ -18,7 +20,7 @@ class Pricefy
     items = @reader.get(@filepath)
     
     items.each do |item|
-      order = @order.transform(item, @serializer)
+      order = @order.transform(item, @serializer, @classifier)
       @orders << order
     end
   end
