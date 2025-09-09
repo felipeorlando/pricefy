@@ -14,11 +14,11 @@ class Order
   end
 
   def price_with_tax
-    (price + tax).round(2)
+    Round.round(price + tax)
   end
   
   def price
-    (@qtd * @unit_price).round(2)
+    Round.round(@qtd * @unit_price)
   end
 
   private
