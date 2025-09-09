@@ -1,5 +1,5 @@
 class Reader
   def get(filepath)
-    File.read(filepath).split
+    File.readlines(filepath, chomp: true)
   end
 end

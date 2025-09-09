@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-require_relative "./lib/pricefy"
-require_relative "./lib/reader"
-
-file = "#{File.dirname(__FILE__)}/file.txt"
-dest_path = "./"
-reader = Reader.new
-
-Pricefy.new(filepath: file, destination_path: dest_path, reader: reader).run
