@@ -1,21 +1,36 @@
 class Order
-  attr_reader :qtd, :title, :price, :tax, :price_with_tax, :is_imported, :tax_exempt
+  attr_reader :qtd, :title, :unit_price, :tax, :price_with_tax, :is_imported, :tax_exempt
 
-  def transform(plain_order, serializer, classifier)
+  def transform(plain_order:, serializer:, classifier:, taxator:)
     @plain_order = plain_order
     @serializer = serializer
     @classifier = classifier
+    @taxator = taxator
+
     serialize
     classify
+    taxify
+  end
+
+  def price_with_tax
+    (price + tax).round(2)
+  end
+  
+  def price
+    (@qtd * @unit_price).round(2)
   end
 
   private
 
   def serialize
-    @qtd, @title, @price, @is_imported = @serializer.get_result(@plain_order)
+    @qtd, @title, @unit_price, @is_imported = @serializer.get_result(@plain_order)
   end
 
   def classify
     @tax_exempt = @classifier.is_tax_exempt?(@title)
+  end
+
+  def taxify
+    @tax = @taxator.calculate(price, @is_imported, @tax_exempt)
   end
 end
