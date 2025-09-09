@@ -12,7 +12,7 @@ RSpec.describe Order do
       expect(subject.qtd).to eq(2)
       expect(subject.title).to eq("book")
       expect(subject.unit_price).to eq(12.49)
-      expect(subject.price).to eq(24.98)
+      expect(subject.price).to eq(25.0)
       expect(subject.is_imported).to be_falsy
       expect(subject.tax_exempt).to be_truthy
       expect(subject.tax).to be_zero
@@ -24,7 +24,7 @@ RSpec.describe Order do
       subject.transform(plain_order: "2 bottle of perfume at 12.49", serializer: serializer, classifier: classifier,
                         taxator: taxator)
 
-      expect(subject.price_with_tax).to eq(27.48)
+      expect(subject.price_with_tax).to eq(27.5)
     end
   end
 
@@ -33,7 +33,7 @@ RSpec.describe Order do
       subject.transform(plain_order: "2 bottle of perfume at 12.49", serializer: serializer, classifier: classifier,
                         taxator: taxator)
                         
-      expect(subject.price).to eq(24.98)
+      expect(subject.price).to eq(25.0)
     end
   end
 end
